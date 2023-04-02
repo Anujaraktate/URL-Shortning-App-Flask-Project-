@@ -1,0 +1,39 @@
+{% extends 'layout.html'%}
+
+{% block title %}
+ShortUrl | ShortiGo
+{% endblock %}
+
+<span>{% block info %} 
+  Steps to shorten URL<br/>
+    Enter the URL in the given field and click Generate to get the URL
+      Then click Copy button to copy it!<br/> 
+      It's simple...😄 
+  {% endblock %}</span>
+{% block content %}
+<h3>Short URL : http://127.0.0.1:5000/{{short_url_display}}</h3>
+
+<h4>Click Here : <a href="http://127.0.0.1:5000/{{short_url_display}}">http://127.0.0.1:5000/{{short_url_display}}</a></h4>  
+<script>
+  function myFunction() 
+    {var copyText = "http://127.0.0.1:5000/{{short_url_display}}";
+      navigator.clipboard.writeText(copyText);}
+</script>
+<div class="d-flex justify-content-center">
+  <button onclick="myFunction()" class="bttn btn btn-primary cur">
+   Copy URL
+  </button>
+</div>
+<div style="margin: 30px !important;"> 
+    <span>Continue to history page <a href="/display" >Display </a> </span>
+</div>
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+{% for message in messages %}
+<p class="flashes" style="color:red !important;"> Info:  {{message}} </p>
+{% endfor %}
+{% endif %}
+{% endwith %}
+{% endblock %}
+
+ 

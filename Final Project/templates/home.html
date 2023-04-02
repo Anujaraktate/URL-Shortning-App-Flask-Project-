@@ -1,0 +1,24 @@
+{% extends 'layout.html'%}
+
+{% block title %}
+Home | ShortiGo
+{% endblock %}
+
+<span>
+    {% block info %} Steps to shorten URL<br/>
+      Enter the URL in the given field and click Generate to get the URL
+        Then click Copy button to copy it!<br/> 
+        It's simple...😄 
+    {% endblock %}
+</span>
+
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+<form method="post" action="{{url_for('index')}}">
+
+    <label for="long_url">Enter URL:</label><br>
+    <input type="url" name="long_url" placeholder="Enter Here"><br>
+    <button type="submit">Generate</button>
+</form>
+{% endblock %}
